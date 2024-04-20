@@ -15,7 +15,7 @@ export default function Video() {
       <div className="relative"> 
         <video
           className="object-cover w-screen h-screen"
-          src={require('../../../public/videos/v1.mp4')}
+          src={require('../../../public/videos/v1-3.webm')}
           autoPlay
           muted
           loop
