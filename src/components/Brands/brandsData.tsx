@@ -43,6 +43,9 @@ const brandsData: Brand[] = [
     image: "/images/brands/plainadmin.svg",
     imageLight: "/images/brands/plainadmin-light.svg",
   },
+  
+  
+  
 ];
 
 export default brandsData;

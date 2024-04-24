@@ -1,41 +1,59 @@
-import { Brand } from "@/types/brand";
-import Image from "next/image";
-import brandsData from "./brandsData";
+'use client'
+import Image from 'next/image'
+import styles from './page.module.css'
+import { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
-const Brands = () => {
+export default function Home() {
+
+  const firstText = useRef(null);
+  const secondText = useRef(null);
+  const slider = useRef(null);
+  let xPercent = 0;
+  let direction = -1;
+
+  useEffect( () => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(slider.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.25,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: e => direction = e.direction * -1
+      },
+      x: "-500px",
+    })
+    requestAnimationFrame(animate);
+  }, [])
+
+  const animate = () => {
+    if(xPercent < -100){
+      xPercent = 0;
+    }
+    else if(xPercent > 0){
+      xPercent = -100;
+    }
+    gsap.set(firstText.current, {xPercent: xPercent})
+    gsap.set(secondText.current, {xPercent: xPercent})
+    requestAnimationFrame(animate);
+    xPercent += 0.1 * direction;
+  }
+
   return (
-    <section className="pt-16">
-      <div className="container">
-        <div className="-mx-4 flex flex-wrap">
-          <div className="w-full px-4">
-            <div className="flex flex-wrap items-center justify-center rounded-sm bg-gray-light px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
-              {brandsData.map((brand) => (
-                <SingleBrand key={brand.id} brand={brand} />
-              ))}
-            </div>
-          </div>
+    <main className={styles.main}>
+      <Image 
+        src="/images/trip7.jpg"
+        fill={true}
+        alt="background"
+      />
+      <div className={styles.sliderContainer}>
+        <div ref={slider} className={styles.slider}>
+          <p ref={firstText}>Ze Happy Dragon </p>
+          <p ref={secondText}>Ze Happy Dragon </p>
         </div>
       </div>
-    </section>
-  );
-};
-
-export default Brands;
-
-const SingleBrand = ({ brand }: { brand: Brand }) => {
-  const { href, image, imageLight, name } = brand;
-
-  return (
-    <div className="flex w-1/2 items-center justify-center px-3 py-[15px] sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6">
-      <a
-        href={href}
-        target="_blank"
-        rel="nofollow noreferrer"
-        className="relative h-10 w-full opacity-70 transition hover:opacity-100 dark:opacity-60 dark:hover:opacity-100"
-      >
-        
-        <Image src={image} alt={name} fill className="block dark:hidden" />
-      </a>
-    </div>
-  );
-};
+    </main>
+  )
+}

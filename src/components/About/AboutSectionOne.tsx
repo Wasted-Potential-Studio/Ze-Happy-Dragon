@@ -1,24 +1,48 @@
+'use client';
 import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
 import localFont  from "next/font/local";
 import Link from "next/link";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 const myFont = localFont({
   src: './../../../public/fonts/Futura-Std-Light.otf',
   display: 'swap',
 })
 
+const word = "with gsap";
 
 
-const AboutSectionOne = () => {
-  const List = ({  }) => (
-    <p >
-    </p>
-  );
+
+export default function AboutSectionOne() {
+  const container = useRef(null);
+  const imagesRef = useRef(null)
+  
+
+  useLayoutEffect( () => {
+    const context = gsap.context( () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          target: container.current,
+          start: "top bottom",
+          end:"bottom top",
+          scrub: true
+
+        }
+      })
+      tl.to(imagesRef.current, {y: -0}, 0)
+      
+    })
+
+  },[])
+
 
   return (
     <section id="about" className="pt-16 md:pt-20 lg:pt-28">
-      <div className="container">
+      <div ref={container} className="container">
         <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
           <div className="-mx-4 flex flex-wrap items-center">
             <div className="w-full px-16 lg:w-1/2">
@@ -50,7 +74,7 @@ const AboutSectionOne = () => {
             </div>
 
             <div className="w-full px-12 lg:w-1/2">
-              <div className="relative mx-auto aspect-[19/24] max-w-[600px] lg:mr-0">
+              <div  ref={imagesRef} className="relative mx-auto aspect-[19/24] max-w-[600px] lg:mr-0">
                 <Image
                   src="/images/trip8.jpg"
                   alt="about-image"
@@ -72,4 +96,4 @@ const AboutSectionOne = () => {
   );
 };
 
-export default AboutSectionOne;
+
