@@ -13,23 +13,22 @@ import { Metadata } from "next";
 
 
 export const metadata: Metadata = {
-  title: "",
-  description: "",
+  title: "Ze Happy Dragon",
+  description: "Ze Happy Dragon",
   // other metadata
 };
 
 export default function Home() {
   return (
+    
     <>
       <Video />
       <ScrollUp />
       <AboutSectionOne />
       <Brands/>
       <Hero />
-       
       <AboutSectionTwo />
       <Testimonials />
-       
       <Contact />
 
     </>
