@@ -25,10 +25,13 @@ export default function Home() {
       <Video />
       <ScrollUp />
       <AboutSectionOne />
+      <Pricing />
       <Brands/>
       <Hero />
+      
       <AboutSectionTwo />
       <Testimonials />
+      
       <Contact />
     </>
   );

@@ -1,162 +1,117 @@
-"use client";
+'use client';
+import Image from "next/image";
+import localFont from "next/font/local";
 import { useState } from "react";
-import SectionTitle from "../Common/SectionTitle";
-import OfferList from "./OfferList";
-import PricingBox from "./PricingBox";
 
-const Pricing = () => {
-  const [isMonthly, setIsMonthly] = useState(true);
+const myFont = localFont({
+  src: "./../../../public/fonts/Futura-Std-Light.otf",
+  display: "swap",
+});
+
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About Us | Ze Happy Dragon",
+  description: "Ze Happy Dragon",
+  // other metadata
+};
+
+const AboutPage = () => {
+  // Manage separate hover states for each image
+  const [hoveredIndexes, setHoveredIndexes] = useState<number[]>([]); // Specify that it's an array of numbers
+
+  const handleMouseEnter = (index: number) => { // Explicitly define the type of index
+    if (!hoveredIndexes.includes(index)) {
+      setHoveredIndexes([...hoveredIndexes, index]);
+    }
+  };
+
+  const handleMouseLeave = (index: number) => { // Explicitly define the type of index
+    setHoveredIndexes(hoveredIndexes.filter((i) => i !== index));
+  };
 
   return (
-    <section id="pricing" className="relative z-10 py-16 md:py-20 lg:py-28">
-      <div className="container">
-        <SectionTitle
-          title=""
-          paragraph=" "
-          sub=""
-          center
-          width="665px"
-        />
-
-        <div className="w-full">
-          <div className="mb-8 flex justify-center md:mb-12 lg:mb-16">
-            <span
-              onClick={() => setIsMonthly(true)}
-              className={`${
-                isMonthly
-                  ? "pointer-events-none text-primary"
-                  : "text-dark dark:text-white"
-              } mr-4 cursor-pointer text-base font-semibold`}
-            >
-              
-            </span>
-            <div
-              onClick={() => setIsMonthly(!isMonthly)}
-              className="flex cursor-pointer items-center"
-            >
-              <div className="relative">
-                <div className="h-5 w-14 rounded-full bg-[#1D2144] shadow-inner"></div>
-                <div
-                  className={`${
-                    isMonthly ? "" : "translate-x-full"
-                  } shadow-switch-1 absolute left-0 top-[-4px] flex h-7 w-7 items-center justify-center rounded-full bg-primary transition`}
-                >
-                  <span className="active h-4 w-4 rounded-full bg-white"></span>
+    <main className={myFont.className}>
+      <section id="about" className="pt-20 md:pt-20 lg:pt-20">
+        <div className="container">
+          <div className="border-b border-body-color/[.15] pb-16 dark:border-white/[.15] md:pb-20 lg:pb-28">
+            <div className="-mx-2 flex flex-wrap items-center">
+              <div className="w-full px-3 lg:w-1/3 relative">
+                <div className="relative mx-auto aspect-[19/26] max-w-[700px] lg:mr-0">
+                  <div
+                    className={`absolute inset-0 transition-filter ${
+                      hoveredIndexes.includes(0) ? "brightness-75" : "brightness-100"
+                    }`}
+                    onMouseEnter={() => handleMouseEnter(0)}
+                    onMouseLeave={() => handleMouseLeave(0)}
+                  >
+                    <Image
+                      src={`/images/trip8.jpg`}
+                      alt={`about-image-0`}
+                      fill
+                      className="mx-auto max-w-full pb-6 drop-shadow-three  dark:drop-shadow-none lg:mr-0"
+                    />
+                  </div>
+                  <p className="pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Group Journey</p>
+                  <div className="text-center mb-4 mt-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg">
+                    <button className="bg-black hover:text-black px-4 py-2 rounded hover:bg-white  text-white font-bold text-lg">View Details</button>
+                  </div>
                 </div>
               </div>
+
+              <div className="w-full px-3 lg:w-1/3 relative">
+                <div className="relative mx-auto aspect-[19/26] max-w-[700px] lg:mr-0">
+                  <div
+                    className={`absolute inset-0 transition-filter ${
+                      hoveredIndexes.includes(1) ? "brightness-75" : "brightness-100"
+                    }`}
+                    onMouseEnter={() => handleMouseEnter(1)}
+                    onMouseLeave={() => handleMouseLeave(1)}
+                  >
+                    <Image
+                      src={`/images/trip9.jpg`}
+                      alt={`about-image-1`}
+                      fill
+                      className="mx-auto max-w-full pb-6 drop-shadow-three  dark:drop-shadow-none lg:mr-0"
+                    />
+                  </div>
+                  <p className="pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Solo Adventure</p>
+                  <div className="text-center mb-4 mt-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg">
+                    <button className="bg-black hover:text-black px-4 py-2 rounded hover:bg-white  text-white font-bold text-lg">View Details</button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="w-full px-3 lg:w-1/3 relative">
+                <div className="relative mx-auto aspect-[19/26] max-w-[700px] lg:mr-0">
+                  <div
+                    className={`absolute inset-0 transition-filter ${
+                      hoveredIndexes.includes(2) ? "brightness-75" : "brightness-100"
+                    }`}
+                    onMouseEnter={() => handleMouseEnter(2)}
+                    onMouseLeave={() => handleMouseLeave(2)}
+                  >
+                    <Image
+                      src={`/images/trip10.jpg`}
+                      alt={`about-image-2`}
+                      fill
+                      className="mx-auto max-w-full pb-6 drop-shadow-three  dark:drop-shadow-none lg:mr-0"
+                    />
+                  </div>
+                  <p className="pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Family Vacation</p>
+                  <div className="text-center mb-4 mt-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg">
+                    <button className="bg-black hover:text-black px-4 py-2 rounded hover:bg-white  text-white font-bold text-lg">View Details</button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Add more image components as needed */}
             </div>
-            <span
-              onClick={() => setIsMonthly(false)}
-              className={`${
-                isMonthly
-                  ? "text-dark dark:text-white"
-                  : "pointer-events-none text-primary"
-              } ml-4 cursor-pointer text-base font-semibold`}
-            >
-              
-            </span>
           </div>
         </div>
-
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
-          <PricingBox
-            packageName=""
-            price={isMonthly ? "" : ""}
-            duration={isMonthly ? "" : ""}
-            subtitle=""
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="Commercial Use" status="active" />
-            <OfferList text="Email Support" status="active" />
-            <OfferList text="Lifetime Access" status="inactive" />
-            <OfferList text="Free Lifetime Updates" status="inactive" />
-          </PricingBox>
-          <PricingBox
-            packageName=""
-            price={isMonthly ? "" : ""}
-            duration={isMonthly ? "" : ""}
-            subtitle=""
-          >
-            <OfferList text="All UI Components" status="active" />
-            <OfferList text="Use with Unlimited Projects" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="inactive" />
-          </PricingBox>
-          <PricingBox
-            packageName=""
-            price={isMonthly ? "" : ""}
-            duration={isMonthly ? "" : ""}
-            subtitle=""
-          >
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-            <OfferList text="" status="active" />
-          </PricingBox>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 z-[-1]">
-        <svg
-          width="239"
-          height="601"
-          viewBox="0 0 239 601"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <rect
-            opacity="0.3"
-            x="-184.451"
-            y="600.973"
-            width="196"
-            height="541.607"
-            rx="2"
-            transform="rotate(-128.7 -184.451 600.973)"
-            fill="url(#paint0_linear_93:235)"
-          />
-          <rect
-            opacity="0.3"
-            x="-188.201"
-            y="385.272"
-            width="59.7544"
-            height="541.607"
-            rx="2"
-            transform="rotate(-128.7 -188.201 385.272)"
-            fill="url(#paint1_linear_93:235)"
-          />
-          <defs>
-            <linearGradient
-              id="paint0_linear_93:235"
-              x1="-90.1184"
-              y1="420.414"
-              x2="-90.1184"
-              y2="1131.65"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-            <linearGradient
-              id="paint1_linear_93:235"
-              x1="-159.441"
-              y1="204.714"
-              x2="-159.441"
-              y2="915.952"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#4A6CF7" />
-              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
 
-export default Pricing;
+export default AboutPage;
