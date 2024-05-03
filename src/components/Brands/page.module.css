@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   height: 100vh;
-  margin-bottom: 100vh;
+  margin-bottom: 0vh;
   overflow: hidden;
 }
 
@@ -23,7 +23,6 @@
 .slider p{
   position: relative;
   margin: 0px;
-  color: white;
   font-size: 230px;
   font-weight: 500;
   padding-right: 50px;

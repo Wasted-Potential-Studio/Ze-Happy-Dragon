@@ -50,8 +50,8 @@ export default function Home() {
       />
       <div className={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
-          <p ref={firstText}>Ze Happy Dragon </p>
-          <p ref={secondText}>Ze Happy Dragon </p>
+          <p className=" text-black dark:text-white" ref={firstText}>Ze Happy Dragon </p>
+          <p className=" text-black dark:text-white"  ref={secondText}>Ze Happy Dragon </p>
         </div>
       </div>
     </main>
