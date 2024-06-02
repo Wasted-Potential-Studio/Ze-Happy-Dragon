@@ -47,9 +47,9 @@ const Testimonials = () => {
       <div className="container">
       
         <SectionTitle
-          title="Lorem ipsum dolor sit amet"
-          paragraph="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare vitae eros sit amet venenatis. Aliquam in lacus eget felis dapibus tristique at ac lectus. "
-          sub=""
+          title="PLANNING YOUR JOURNEY"
+          paragraph="If you don't see the journey listed for you, reach out and we can put together the perfect bespoke adventure for you"
+          sub="Unsure where to go? Tell us what you enjoy and our travel expert will offer inspiration"
           center
         />
 
