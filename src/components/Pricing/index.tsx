@@ -46,13 +46,13 @@ const AboutPage = () => {
                     onMouseLeave={() => handleMouseLeave(0)}
                   >
                     <Image
-                      src={`/images/trip8.jpg`}
+                      src={`/images/Private Prayers Rooms.jpg`}
                       alt={`about-image-0`}
                       fill
                       className="mx-auto max-w-full pb-6 drop-shadow-three  dark:drop-shadow-none lg:mr-0"
                     />
                   </div>
-                  <p className="pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Group Journey</p>
+                  <p className="text-white pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Group Journey</p>
                   <div className="text-center mb-4 mt-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg">
                     <button className="bg-black hover:text-black px-4 py-2 rounded hover:bg-white  text-white font-bold text-lg">View Details</button>
                   </div>
@@ -69,13 +69,13 @@ const AboutPage = () => {
                     onMouseLeave={() => handleMouseLeave(1)}
                   >
                     <Image
-                      src={`/images/trip9.jpg`}
+                      src={`/images/Heritage Hotel Oper Air Lounge.jpg`}
                       alt={`about-image-1`}
                       fill
                       className="mx-auto max-w-full pb-6 drop-shadow-three  dark:drop-shadow-none lg:mr-0"
                     />
                   </div>
-                  <p className="pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Solo Adventure</p>
+                  <p className=" text-white pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Solo Adventure</p>
                   <div className="text-center mb-4 mt-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg">
                     <button className="bg-black hover:text-black px-4 py-2 rounded hover:bg-white  text-white font-bold text-lg">View Details</button>
                   </div>
@@ -92,13 +92,13 @@ const AboutPage = () => {
                     onMouseLeave={() => handleMouseLeave(2)}
                   >
                     <Image
-                      src={`/images/trip10.jpg`}
+                      src={`/images/Sangchen Choekar.jpg`}
                       alt={`about-image-2`}
                       fill
                       className="mx-auto max-w-full pb-6 drop-shadow-three  dark:drop-shadow-none lg:mr-0"
                     />
                   </div>
-                  <p className="pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Family Vacation</p>
+                  <p className="text-white pb-4 pt-6 text-center text-5xl absolute left-1/2 top-1/9 -translate-x-1/2 -translate-y-1/9">Family Vacation</p>
                   <div className="text-center mb-4 mt-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white font-bold text-lg">
                     <button className="bg-black hover:text-black px-4 py-2 rounded hover:bg-white  text-white font-bold text-lg">View Details</button>
                   </div>

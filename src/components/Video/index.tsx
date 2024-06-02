@@ -3,7 +3,7 @@ import React from "react";
 import  localFont  from "next/font/local";
 
 const myFont = localFont({
-  src: './../../../public/fonts/Wulkan-Display-Medium.otf',
+  src: './../../../public/fonts/Futura-Std-Light.otf',
   display: 'swap',
 })
 
