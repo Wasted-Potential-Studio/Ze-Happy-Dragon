@@ -26,10 +26,10 @@ export default function Home() {
       <ScrollUp />
       <AboutSectionOne />
       <Pricing />
-      <Brands/>
-      <Hero />
       <Slider/>
+      <Hero />
       <AboutSectionTwo />
+      <Brands/>
       <Testimonials />
       <Contact />
     </>
