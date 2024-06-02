@@ -28,10 +28,8 @@ export default function Home() {
       <Pricing />
       <Brands/>
       <Hero />
-      
       <AboutSectionTwo />
       <Testimonials />
-      
       <Contact />
     </>
   );
