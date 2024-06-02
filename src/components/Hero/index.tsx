@@ -1,33 +1,108 @@
-"use client";
+'use client';
+import styles from './style.module.scss';
+import { projects } from './data';
+import { useScroll } from 'framer-motion';
+import { useEffect, useRef } from 'react';
+import Image from 'next/image';
+import { useTransform, motion } from 'framer-motion';
+import localFont  from "next/font/local";
 
-import React from "react";
-import  localFont  from "next/font/local";
-import Image from "next/image";
+interface CardProps {
+  i: number;
+  title: string;
+  description: string;
+  src: string;
+  link: string; // Assuming you're using 'link' from your data
+  color: string;
+  progress: any;
+  range: number[];
+  targetScale: number;
+}
 
 const myFont = localFont({
-  src: './../../../public/fonts/Wulkan-Display-Medium.otf',
+  src: './../../../public/fonts/Futura-Std-Light.otf',
   display: 'swap',
 })
 
-export default function Video() {
+const Card = ({ i, title, description, src, link, color, progress, range, targetScale }: CardProps) => {
+  const container = useRef(null);
+
+  // Calculate the section boundaries 
+  const sectionStart = i * 0.25; 
+  const sectionEnd = (i + 1) * 0.25;
+
+  // Track scroll progress only within the section
+  const sectionProgress = useTransform(progress, [sectionStart, sectionEnd], [4, 1]);
+
+  const imageScale = useTransform(sectionProgress, [0, 1], [2, 1]);
+  const scale = useTransform(sectionProgress, [0, 1], [1, targetScale]);
+
   return (
-    <main className={myFont.className}>
-    <section 
-      className="relative overflow-hidden bg-white pb-0 pt-[0px] dark:bg-gray-dark md:pb-[0px] md:pt-[0px] xl:pb-[0px] xl:pt-[0px] 2xl:pb-[0px] 2xl:pt-[0px]"
-    >
-      <div className="relative object-cover w-screen h-screen"> 
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center"> 
-        <p className="mb- text-base !leading-relaxed text-black dark:text-white sm:text-lg md:text-xl text-center"></p>
-          <h1 className="mb-0 text-4xl leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight xl:text-7xl 2xl:text-7xl text-center">
-            Lorem Ipsum<br />
-            dolor sit amet <br />
-          </h1>
-          <h1 className="mb-0 text-4xl font leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight xl:text-7xl 2xl:text-7xl text-center">
-            <em></em>
-          </h1>
+    <div ref={container} className={styles.cardContainer}>
+      <motion.div
+        style={{ backgroundColor: color, scale, top: `calc(-5vh + ${i * 25}px)` }}
+        className={styles.card}
+      >
+        <main  className={myFont.className}>
+        <h2>{title}</h2>
+        <div className={styles.body}>
+          <div className={styles.description}>
+            <p>{description}</p>
+            <span>
+              <a href={link} target="_blank"> 
+                See more
+              </a>
+              <svg
+                width="22"
+                height="12"
+                viewBox="0 0 22 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21.5303 6.53033C21.8232 6.23744 21.8232 5.76256 21.5303 5.46967L16.7574 0.696699C16.4645 0.403806 15.9896 0.403806 15.6967 0.696699C15.4038 0.989592 15.4038 1.46447 15.6967 1.75736L19.9393 6L15.6967 10.2426C15.4038 10.5355 15.4038 11.0104 15.6967 11.3033C15.9896 11.5962 16.4645 11.5962 16.7574 11.3033L21.5303 6.53033ZM0 6.75L21 6.75V5.25L0 5.25L0 6.75Z"
+                  fill="black"
+                />
+              </svg>
+            </span>
+          </div>
+
+          <div className={styles.imageContainer}>
+            <motion.div className={styles.inner} style={{ scale: imageScale }}>
+              <Image fill src={`/images/${src}`} alt="image" />
+            </motion.div>
+          </div>
         </div>
-      </div>
-    </section>
+        </main>
+      </motion.div>
+    </div>
+  );
+};
+
+export default function Home() {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start start', 'end end'],
+  });
+
+  //  Removed Lenis related code here
+
+  return (
+    <main ref={container} className={styles.main}>
+      {projects.map((project, i) => {
+        const targetScale = 1 - (projects.length - i) * 0.05;
+        return (
+          <Card
+            key={`p_${i}`}
+            i={i}
+            {...project}
+            progress={scrollYProgress}
+            range={[i * 0.25, (i + 1) * 0.25]} 
+            targetScale={targetScale}
+          />
+        );
+      })}
     </main>
   );
 }
